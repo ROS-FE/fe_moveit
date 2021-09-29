@@ -31,11 +31,23 @@ if not trajectory_client.wait_for_server():
 
 # Move the robot with a trajectory created by PILZ
 rospy.loginfo("Moving the robot with PILZ ...")
+
+# Create the goal class by retrieving the current joint values
 joint_goal_pilz = list(robot.get_current_state().joint_state.position)
+
+# Modify the first joint by adding a bit of an offset to it
 joint_goal_pilz[0] = joint_goal_pilz[0] + first_axis_offset
-trajectory_goal_pilz = FollowJointTrajectoryGoal()
+
+# Compute a trajectory using the move_group_pilz
 computed_trajectory_pilz = move_group_pilz.plan(joint_goal_pilz)
+
+# Create a Python class that is the right type for the action server
+trajectory_goal_pilz = FollowJointTrajectoryGoal()
+
+# Modify the the .trajectory field of the class from the computed trajectory
 trajectory_goal_pilz.trajectory = computed_trajectory_pilz.joint_trajectory
+
+# Send the trajectory to the action server and wait for the robot to finish moving
 trajectory_client.send_goal_and_wait(trajectory_goal_pilz)
 
 
