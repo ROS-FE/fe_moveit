@@ -15,13 +15,13 @@
 
   <arg name="load_robot_description" default="true" />
   <!-- load URDF, SRDF and joint_limits configuration -->
-  <include file="$(find fe_ros)/launch/include/$(arg planning_context).launch">
+  <include file="$(find fe_moveit)/launch/include/$(arg planning_context).launch">
     <arg name="load_robot_description" value="$(arg load_robot_description)" />
   </include>
 
   <!-- <group ns='pilz'> -->
   <!-- Planning Functionality -->
-  <include ns="move_group" file="$(find fe_ros)/launch/include/pilz_planning_pipeline.launch.xml"/>
+  <include ns="move_group" file="$(find fe_moveit)/launch/include/pilz_planning_pipeline.launch.xml"/>
 
   <!-- Trajectory Execution Functionality -->
   <include ns="move_group" file="$(find $(arg moveit_configuration_package))/launch/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">

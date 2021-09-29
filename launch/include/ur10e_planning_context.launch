@@ -12,9 +12,9 @@
   <param name="$(arg robot_description)_semantic" textfile="$(find ur10e_moveit_config)/config/ur10e.srdf" />
 
   <!-- Load updated joint limits (override information from URDF) -->
-  <!-- <rosparam command="load" param="robot_description_planning" file="$(find fe_ros)/config/joint_limits_accel.yaml"/> -->
+  <!-- <rosparam command="load" param="robot_description_planning" file="$(find fe_moveit)/config/joint_limits_accel.yaml"/> -->
   <group ns="$(arg robot_description)_planning">
-    <rosparam command="load" file="$(find fe_ros)/config/joint_limits_accel.yaml"/>
+    <rosparam command="load" file="$(find fe_moveit)/config/joint_limits_accel.yaml"/>
   </group>
 
   <!-- Load default settings for kinematics; these settings are overridden by settings in a node's namespace -->

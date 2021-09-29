@@ -1,14 +1,14 @@
 <launch>
 
   <!-- Start the separate move_group, defined specially for PILZ motion planners-->
-  <include file="$(find fe_ros)/launch/include/pilz_move_group.launch.xml">
+  <include file="$(find fe_moveit)/launch/include/pilz_move_group.launch.xml">
       <arg name="allow_trajectory_execution" value="false"/>
       <arg name="fake_execution" value="false"/>
-      <arg name="moveit_configuration_package" value="ur10e_moveit_config"/>      
-      <arg name="planning_context" value="ur10e_planning_context"/>      
+      <arg name="moveit_configuration_package" value="ur10e_moveit_config"/>
+      <arg name="planning_context" value="ur10e_planning_context"/>
       <arg name="load_robot_description" value="true"/>
   </include>
 
-  <!-- <include file="$(find fe_ros)/launch/include/ur10e_planning_context.launch"/> -->
+  <!-- <include file="$(find fe_moveit)/launch/include/ur10e_planning_context.launch"/> -->
 
 </launch>
